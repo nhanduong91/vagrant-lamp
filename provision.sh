@@ -18,6 +18,18 @@ main() {
 	mysql_go
 	php_go
 	autoremove_go
+	php_go_upgrade
+}
+
+php_go_upgrade() {
+	add-apt-repository ppa:ondrej/php -y
+	apt-get update
+	apt-get install libapache2-mod-php5.6 -y
+	a2dismod php5
+	a2enmod php5.6 
+	add-apt-repository ppa:ondrej/php5-compat -y
+	apt-get update
+	apt-get dist-upgrade -y
 }
 
 repositories_go() {
